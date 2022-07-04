@@ -1,0 +1,2 @@
+book, journal, magazine, newspaper, Komsomolka, Washington Post, 
+6, 14, 23, 37, 85, 94, 123, 
