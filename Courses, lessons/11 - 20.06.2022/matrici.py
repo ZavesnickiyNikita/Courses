@@ -40,5 +40,5 @@ m = 5
 a = [[0] * m for i in range(n)]
 for i in range(n):
     for j in range(m):
-        a[i][j] = random.randint(1, 101)
+        a[i][j] = int(input())
 print(a)

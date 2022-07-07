@@ -20,19 +20,19 @@ print()
 # Второй способ
 
 
-line = 5
-column = 5
-matrix = [[0] * column for i in range(line)]
-for i in range(line):
-    for j in range(column):
-        matrix[i][j] = random.randint(1, 101)
-print(*matrix, sep ='\n')
-print('----------------------')
-s = []
-for i in range(len(matrix)):
-    s.append(sum(matrix[i]))
-print('Строка с максимальными значениями: ', matrix[s.index(max(s))])
-print('Индекс данной строки: ',[s.index(max(s))])
+# line = 5
+# column = 5
+# matrix = [[0] * column for i in range(line)]
+# for i in range(line):
+#     for j in range(column):
+#         matrix[i][j] = random.randint(1, 101)
+# print(*matrix, sep ='\n')
+# print('----------------------')
+# s = []
+# for i in range(len(matrix)):
+#     s.append(sum(matrix[i]))
+# print('Строка с максимальными значениями: ', matrix[s.index(max(s))])
+# print('Индекс данной строки: ',[s.index(max(s))])
 
 
 
