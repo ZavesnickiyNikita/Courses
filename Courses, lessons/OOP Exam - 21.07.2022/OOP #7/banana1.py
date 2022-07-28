@@ -1,4 +1,4 @@
-from banana1 import Banana
+from orange1 import Orange
 
 class Banana(Orange):
     def __init__(self, sort, vitamins, price, name, num_of_kalium):
