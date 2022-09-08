@@ -14,4 +14,13 @@ pets = [('Hatiko', 'Parker', 'Wilson', 50),
         ('Ace', 'Martha', 'Williams', 38),
         ('Rocky', 'Simon', 'Nevel', 32)]
 
-for
+klichka = []
+for i in pets:
+    klichka.append(i[0])
+names= []
+for i in pets:
+    names.append(i[1:4])
+result = {}
+for klichka, *names in pets:
+    result.setdefault(tuple(names), []).append(klichka)
+
