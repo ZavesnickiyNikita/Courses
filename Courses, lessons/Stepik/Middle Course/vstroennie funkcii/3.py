@@ -21,7 +21,8 @@ numbers = [1014, 1321, 675, 1215, 56, 1386, 1385, 431, 1058, 486, 1434, 696, 101
 
 
 def ostatok(num):
-    return num % 5 == 2 and (0 < num // 100 < 10)
+    if num % 5 == 2 and (0 < num // 100 < 10):
+        return num
 
 
 def cube(num):
