@@ -1,12 +1,15 @@
 def spell(*args):
-    dct, lenght = {}, 0
-    for i in args:
-        dct.setdefault(str(i).lower()[0], 0)
-    for i in args:
-        dct.update(i)
-    return dct
+    return {i[0].lower():len(i) for i in sorted(args, key=len)}
 
 
-words = ['россия', 'Австрия', 'австралия', 'РумыниЯ', 'Украина', 'КИТай', 'УЗБЕКИСТАН']
+words = ['a', 'aa', 'aaa', 'aaaa', 'aaaaa']
 
 print(spell(*words))
+
+
+
+
+
+
+
+
