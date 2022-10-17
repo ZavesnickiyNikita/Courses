@@ -1,17 +1,15 @@
-from random import *
-
-
 def get_biggest(numbers):
-    lst = []
     if not numbers:
         return -1
-    else:
-        while True:
-            for i in numbers:
-                num = 
-                lst.append(choice(numbers[i]))
-            break
-    return lst
 
+    li = [str(i) for i in numbers]
+    lenght = len(li)
 
-print(get_biggest([1, 2, 3]))
+    for i in range(lenght):
+        index = i
+        for j in range(i + 1, lenght):
+            if li[j] + li[index] > li[index] + li[j]:
+                index = j
+        li[i], li[index] = li[index], li[i]
+
+    return int(''.join(li))
