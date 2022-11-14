@@ -1,8 +1,18 @@
-li, d = [], dict()
-for i in range(int(input())):
-    li.append(input().split(', '))
-print(li)
+li, total_list = [], []
+n = int(input())
+for i in range(n):
+    li.extend(input().split(', '))
 
-for i in li:
+for j in li:
+    if li.count(j) == n and j not in total_list:
+        total_list.append(j)
 
-print(d)
+
+if len(total_list) == 0:
+    print('Сериал снять не удастся')
+else:
+    print(', '.join(sorted(total_list)))
+
+
+
+
