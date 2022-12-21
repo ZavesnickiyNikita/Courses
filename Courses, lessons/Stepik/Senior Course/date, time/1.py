@@ -1,6 +1,5 @@
+# импортируем тип date из модуля datetime
 from datetime import date
 
-print(date.min)
-print(date.max)
-
-
+# выводим текущую дату
+print(date.today())
