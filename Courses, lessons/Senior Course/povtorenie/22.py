@@ -1,11 +1,5 @@
-ls = ["ivan-ivanov@beegeek.bzz", "ivan-ivanov1@beegeek.bzz", "ivan-ivanov2@beegeek.bzz"]
+string = "1a2b3c4d"
 
-email = "ivan-ivanov@beegeek.bzz"
+dictionary = {letter: int(number) for number, letter in zip(string[::2], string[1::2])}
+print(dictionary)
 
-count = 0
-for i in ls:
-    if email in ls:
-        count += 1
-
-
-print(count)

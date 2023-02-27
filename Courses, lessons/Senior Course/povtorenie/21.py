@@ -1,31 +1,22 @@
-import string
+import string as st
 
 
-ls_1, ls_2, result = [], [], []
-
-num = int(input())
-for i in range(num):
-    email = input()
-    ls_1.append(email.split('@')[0])
-
-
-num_2 = int(input())
-for i in range(num_2):
-    new_email = input()
-    ls_2.append(new_email.split('@')[0])
-
-
-for i in ls_2:
-    if i not in ls_1:
-        result.append(f'{i}@beegeek.bzz')
+old_mails, ls = {}, []
+for _ in range(int(input())):
+    mail = input().split('@')[0]
+    # if any(map(lambda x: x in ('0', '1', '2', '3', '4', '5', '6', '7', '8', '9'), mail)):
+    if any(map(lambda x: x.isnumeric(), mail)):
+        num = mail[-1]
+        old_mails.setdefault(mail.rstrip(st.digits), num)
     else:
-        count = 0
-        for j in ls_2:
-            if j in ls_1:
-                count += 1
-        result.append(f'{j}{count}@beegeek.bzz')
+        old_mails.setdefault(mail.split('@')[0], 0)
+        
 
-print(result)
+
+# print(old_mails)
+
+
+            
 
 
 
