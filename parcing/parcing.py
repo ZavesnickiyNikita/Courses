@@ -1,30 +1,30 @@
-# import requests
-# from bs4 import BeautifulSoup
-# import sqlite3  # импортируем модуль для работы с SQLite
-# from datetime import datetime  # импортируем модуль для работы с датой/временем
-#
-# # создадим подключение к SQLite-базе, создадим таблицу, если она не существует
-# con = sqlite3.connect("windows_store.db")   # con - connection (подключение)
-# cur = con.cursor()   # cur - cursor (курсор)
-# cur.execute("CREATE TABLE IF NOT EXISTS apps (name TEXT, company TEXT, release_year INTEGER, email TEXT)")
-#
-#
-# url = 'https://apps.microsoft.com/store/category/Business'   # url - link (ссылка)
-# response = requests.get(url).text   # response - response (ответ)
-# soup = BeautifulSoup(response, 'lxml')   # soup - soup (суп)
-#
-#
-# for item in soup.find_all('div', class_="mj33-card"):    # item - item (элем.)
-#
-#     name = item.find('div', class_="mj33-card__heading").text    # name - name (назв.)
-#
-#     company = item.find('div', class_="mj33-card__subtitle").text    # company - company (ком.)
-#
-#     try:     # try - try / except - except (пыт./иск.)
-#         release_year = int(item.find('span', class_="mj33-release-year").text[1:-1])     # release year - year of release (вых.)
-#
-#     except AttributeError:     # attribute error - error of attribute (ошибка атриб.)                                                             release_year = None
-#
-#     email = item.find('a', class_="mj33-contact")['href'][7:]   # email - electronic mail (эл.-я.)
-#
-#     cur.execute("INSERT INTO apps VALUES (?, ?, ?, ?)", [name, company, release_year, email])   # execute command to insert data into the table ('apps')     con.commit()   # commit the changes to the database ('windows store')     con.close()
+
+
+import requests
+from bs4 import BeautifulSoup
+
+url = "https://apps.microsoft.com/store/category/business"
+
+# получаем страницу
+page = requests.get(url)
+soup = BeautifulSoup(page.content, 'html.parser')
+
+# находим все теги с названием приложения, разработчиком, годом релиза и электронной почтой
+app_titles = soup.find_all('h2', class_="c-heading-2")
+developer_names = soup.find_all('div', class_="c-listing-tile-v2__subtitle")
+release_years = soup.find_all('span', class_="c-listing-tile-v2__release-date")
+emails = soup.find_all('a', class_="c-listing-tile-v2__contact-email")
+
+# записываем результат парсинга в HTML файл
+with open('parsed_apps.html', 'w') as f:
+    f.write('<html><body>')
+    for i in range(len(app_titles)):
+        f.write(f"<h2>Название приложения: {app_titles[i].text}</h2>")
+        f.write(f"<div>Название компании производителя: {developer_names[i].text}</div>")
+        f.write(f"<span>Год релиза: {release_years[i].text}</span>")
+        try:
+            f.write(f"<a>Email: {emails[i].text}</a>")
+        except:
+            f.write("<a>Email отсутствует</a>")
+        f.write('<hr>')
+    f.write('</body></html>')
