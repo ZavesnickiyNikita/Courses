@@ -3,8 +3,9 @@ from datetime import *
 
 time = input()
 time = datetime.strptime(time, '%H:%M:%S')
-next_day = time + timedelta(days=1)
 
-print(next_day - (next_day - time))
+previous_day = '00:00:00'
+previous_day = datetime.strptime(previous_day, '%H:%M:%S')
 
-
+total_seconds = timedelta.total_seconds(time - previous_day)
+print(str(total_seconds)[:-2])
